@@ -14,6 +14,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
  
 
@@ -32,7 +33,8 @@ public class Book {
     @NotEmpty
     @Size(min = 3, max = 40)
     private String language;
-    @Min(100)
+    @NotNull
+    @Min(value=100, message="Must be longer than 100 pages.")
     private Integer numberOfPages;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
